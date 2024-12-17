@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 public class RewardRestModel {
     private String rewardName;
     private int points;
-
     public RewardRestModel(String rewardName, int points) {
         this.rewardName = rewardName;
         this.points = points;

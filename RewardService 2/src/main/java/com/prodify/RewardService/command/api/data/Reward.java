@@ -11,6 +11,7 @@ import lombok.Data;
 public class Reward {
 
     @Id
+
     private String rewardId;
     private String rewardName;
     private Integer points;
