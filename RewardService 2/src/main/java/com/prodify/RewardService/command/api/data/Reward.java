@@ -5,14 +5,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @Entity
 @Table(name="rewards")
 public class Reward {
 
     @Id
-
     private String rewardId;
     private String rewardName;
     private Integer points;
+    private Date createdAt;
 }
