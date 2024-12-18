@@ -4,6 +4,7 @@ import com.prodify.RewardService.command.api.command.CreateRewardCommand;
 import com.prodify.RewardService.command.api.events.RewardCreatedEvent;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -16,6 +17,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 @Aggregate
 @Getter
 @Setter
+@Slf4j
 public class RewardAggregate {
     @AggregateIdentifier
     private String rewardId;
@@ -55,7 +57,8 @@ public class RewardAggregate {
                 createRewardCommand.getRewardId(),
                 createRewardCommand.getRewardName(),
                 createRewardCommand.getPoints());
-        BeanUtils.copyProperties(createRewardCommand, rewardCreatedEvent);
+        log.info("Created Reward Event with rewardId:{}", rewardCreatedEvent.getRewardId());
+        log.info("Applied RewardCreatedEvent for rewardId:{}", rewardCreatedEvent.getRewardId());
         AggregateLifecycle.apply(rewardCreatedEvent);
     }
 

@@ -1,0 +1,31 @@
+<!--<databaseChangeLog-->
+<!--        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"-->
+<!--        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-->
+<!--    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">-->
+
+<!--    &lt;!&ndash; Create token_entry table for Axon &ndash;&gt;-->
+<!--    <changeSet id="1-create-token-entry-table" author="prasannakumardeep">-->
+<!--        <createTable tableName="token_entry">-->
+<!--            <column name="owner" type="VARCHAR(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="timestamp" type="TIMESTAMP WITHOUT TIME ZONE">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="token" type="VARCHAR(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="token_type" type="VARCHAR(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="processor_name" type="VARCHAR(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--            <column name="segment" type="VARCHAR(255)">-->
+<!--                <constraints nullable="false"/>-->
+<!--            </column>-->
+<!--        </createTable>-->
+<!--    </changeSet>-->
+
+<!--</databaseChangeLog>-->

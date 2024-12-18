@@ -13,6 +13,8 @@ public class CreateRewardCommand {
 
     @TargetAggregateIdentifier
     private String rewardId;
+    private String rewardName;
+    private int points;
 
     public String getRewardId() {
         return rewardId;
@@ -30,7 +32,7 @@ public class CreateRewardCommand {
         this.rewardName = rewardName;
     }
 
-    public Integer getPoints() {
+    public int getPoints() {
         return points;
     }
 
@@ -46,7 +48,4 @@ public class CreateRewardCommand {
 
     public CreateRewardCommand() {
     }
-
-    private String rewardName;
-    private Integer points;
 }

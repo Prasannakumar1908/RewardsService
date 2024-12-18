@@ -7,7 +7,7 @@ import lombok.*;
 public class RewardCreatedEvent {
     private String rewardId;
     private String rewardName;
-    private Integer points;
+    private int points;
 
     public RewardCreatedEvent(String rewardId, String rewardName, Integer points) {
         this.rewardId = rewardId;
@@ -34,7 +34,7 @@ public class RewardCreatedEvent {
         this.rewardName = rewardName;
     }
 
-    public Integer getPoints() {
+    public int getPoints() {
         return points;
     }
 

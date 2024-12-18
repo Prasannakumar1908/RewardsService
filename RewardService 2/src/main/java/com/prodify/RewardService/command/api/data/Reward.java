@@ -15,6 +15,5 @@ public class Reward {
     @Id
     private String rewardId;
     private String rewardName;
-    private Integer points;
-    private Date createdAt;
+    private int points;
 }

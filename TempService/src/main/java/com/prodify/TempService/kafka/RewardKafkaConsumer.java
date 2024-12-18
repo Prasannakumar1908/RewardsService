@@ -40,6 +40,6 @@ public class RewardKafkaConsumer {
 
     private void processRewardEvent(RewardEvent rewardEvent) {
 
-        log.info("Processing reward for rewardId:{} with points:{]", rewardEvent.getRewardId(), rewardEvent.getPoints());
+        log.info("Processing reward for rewardId:{} with points:{}", rewardEvent.getRewardId(), rewardEvent.getPoints());
     }
 }
