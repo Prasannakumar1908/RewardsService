@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 public class RewardProcessingSaga {
 
     Logger log = Logger.getLogger(RewardProcessingSaga.class.getName());
+
     @StartSaga
     @SagaEventHandler(associationProperty = "rewardId")
     private void handle(RewardCreatedEvent event) {

@@ -37,20 +37,18 @@ public class RewardCommandController {
     public ResponseEntity<String> createReward(@RequestBody RewardRestModel rewardRestModel) {
         String requestId = requestIdContext.getRequestId();
         String rewardId = UUID.randomUUID().toString();
-        log.info("Recevied create reward with requestId:{},rewardName:{}", requestId,rewardRestModel.getRewardName());
+        log.info("Recevied create reward with requestId:{},rewardName:{}", requestId, rewardRestModel.getRewardName());
         CreateRewardCommand createRewardCommand =
-                new CreateRewardCommand(rewardId,rewardRestModel.getRewardName(), rewardRestModel.getPoints());
-        try{
-            log.debug("Sending CreateRewardCommand with requestId:{},rewardId:{}", requestId,rewardId);
+                new CreateRewardCommand(rewardId, rewardRestModel.getRewardName(), rewardRestModel.getPoints());
+        try {
+            log.debug("Sending CreateRewardCommand with requestId:{},rewardId:{}", requestId, rewardId);
             commandGateway.sendAndWait(createRewardCommand);
-            rewardKafkaProducer.sendRewardEvent("reward-events",rewardId,rewardRestModel);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Reward created with ID:"+rewardId);
-        }
-        catch (CommandExecutionException e) {
+            rewardKafkaProducer.sendRewardEvent("reward-events", rewardId, rewardRestModel);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Reward created with ID:" + rewardId);
+        } catch (CommandExecutionException e) {
             log.error("Failed to execute CreateRewardCommand", e);
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error creating reward");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log.error("Unexpected error while creating CreateRewardCommand", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating reward");
         }

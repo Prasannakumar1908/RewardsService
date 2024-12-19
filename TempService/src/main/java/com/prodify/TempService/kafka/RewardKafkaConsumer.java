@@ -18,22 +18,21 @@ public class RewardKafkaConsumer {
     public RewardKafkaConsumer(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
-    @KafkaListener(topics="reward-events",groupId="temp-service-group")
-    public void listenrewardEvents(String rewardData){
-        try{
+
+    @KafkaListener(topics = "reward-events", groupId = "temp-service-group")
+    public void listenrewardEvents(String rewardData) {
+        try {
             log.info("Received raw reward event: " + rewardData);
             JsonNode jsonNode = objectMapper.readTree(rewardData);
             String rewardId = jsonNode.get("rewardId").asText();  // Extract orderId from the message
             JsonNode rewardDataNode = jsonNode.get("rewardData"); // Extract the orderData field
-            if(rewardDataNode!=null){
+            if (rewardDataNode != null) {
                 RewardEvent rewardEvent = objectMapper.treeToValue(rewardDataNode, RewardEvent.class);
                 processRewardEvent(rewardEvent);
-            }
-            else{
+            } else {
                 log.warn("Received Kafka message with no rewardData field: " + rewardData);
             }
-        }
-        catch (JsonProcessingException e){
+        } catch (JsonProcessingException e) {
             log.error("Failed to deserialze reward event: " + rewardData, e);
         }
     }

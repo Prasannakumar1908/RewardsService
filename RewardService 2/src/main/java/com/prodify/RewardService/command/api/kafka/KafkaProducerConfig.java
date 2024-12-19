@@ -38,11 +38,11 @@ public class KafkaProducerConfig {
             logger.info("Initializing Kafka Producer Factory with configuration: {}", configProps);
             return new DefaultKafkaProducerFactory<>(configProps);
         } catch (IllegalArgumentException e) {
-            logger.warn("Invalid kafka producer configuration:{}",e.getMessage());
+            logger.warn("Invalid kafka producer configuration:{}", e.getMessage());
             logger.error("Invalid Kafka producer configuration: {}", e.getMessage());
             throw e;
         } catch (Exception e) {
-            logger.warn("Unexpected error initializing Kafka Producer Factory{}",e.getMessage());
+            logger.warn("Unexpected error initializing Kafka Producer Factory{}", e.getMessage());
             logger.error("Unexpected error initializing Kafka Producer Factory: {}", e.getMessage());
             throw new RuntimeException("Failed to initialize Kafka Producer Factory", e);
         }
@@ -55,11 +55,11 @@ public class KafkaProducerConfig {
             logger.info("Creating Kafka Template");
             return new KafkaTemplate<>(producerFactory());
         } catch (TimeoutException e) {
-            logger.warn("Timeout while creating Kafka Template:{}",e.getMessage());
+            logger.warn("Timeout while creating Kafka Template:{}", e.getMessage());
             logger.error("Timeout while creating Kafka Template: {}", e.getMessage());
             throw e;
         } catch (Exception e) {
-            logger.warn("Unexpected error creating Kafka Template:{}",e.getMessage());
+            logger.warn("Unexpected error creating Kafka Template:{}", e.getMessage());
             logger.error("Unexpected error creating Kafka Template: {}", e.getMessage());
             throw new RuntimeException("Failed to create Kafka Template", e);
         }

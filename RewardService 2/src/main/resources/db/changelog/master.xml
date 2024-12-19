@@ -7,6 +7,4 @@
 
     <!-- Reference individual changelog files -->
     <include file="db/changelog/migration/_0.1.0_migrate.sql"/>
-    <include file="db/changelog/migration/_0.1.1_migrate.sql"/>
-    <!--    <include file="db/changelog/0.1.0/token-entry-table.xml"/>-->
 </databaseChangeLog>

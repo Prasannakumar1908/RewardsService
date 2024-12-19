@@ -51,6 +51,7 @@ public class RewardAggregate {
     public RewardAggregate() {
 
     }
+
     @CommandHandler
     public RewardAggregate(CreateRewardCommand createRewardCommand) {
         RewardCreatedEvent rewardCreatedEvent = new RewardCreatedEvent(

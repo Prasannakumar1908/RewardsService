@@ -16,16 +16,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Slf4j
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(value=QuantityZeroFoundException.class)
+    @ExceptionHandler(value = QuantityZeroFoundException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     public @ResponseBody ErrorResponse handleException(QuantityZeroFoundException ex) {
         return new ErrorResponse(HttpStatus.CONFLICT.value(), ex.getMessage());
-    }
-
-    @ExceptionHandler(value=OrderNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public @ResponseBody ErrorResponse handleException(OrderNotValidException ex) {
-        return new ErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage());
     }
 
     @ExceptionHandler(DownstreamServiceException.class)

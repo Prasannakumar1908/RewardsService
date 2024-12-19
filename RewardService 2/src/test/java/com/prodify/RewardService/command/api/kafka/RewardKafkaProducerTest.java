@@ -84,7 +84,8 @@ class RewardKafkaProducerTest {
         String rewardId = "reward123";
         Object rewardRestModel = new Object();
 
-        when(objectMapper.writeValueAsString(rewardRestModel)).thenThrow(new JsonProcessingException("Serialization error") {});
+        when(objectMapper.writeValueAsString(rewardRestModel)).thenThrow(new JsonProcessingException("Serialization error") {
+        });
 
         // Act
         rewardKafkaProducer.sendRewardEvent(topic, rewardId, rewardRestModel);

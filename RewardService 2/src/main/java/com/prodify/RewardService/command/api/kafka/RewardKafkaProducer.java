@@ -15,12 +15,13 @@ public class RewardKafkaProducer {
     private static final Logger log = LoggerFactory.getLogger(RewardKafkaProducer.class);
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final ObjectMapper objectMapper;
+
     public RewardKafkaProducer(KafkaTemplate<String, String> kafkaTemplate, ObjectMapper objectMapper) {
         this.kafkaTemplate = kafkaTemplate;
         this.objectMapper = objectMapper;
     }
 
-    public void sendRewardEvent(String topic, String rewardId, Object rewardRestModel){
+    public void sendRewardEvent(String topic, String rewardId, Object rewardRestModel) {
         try {
             String rewardData = objectMapper.writeValueAsString(rewardRestModel);
             String message = "{\"rewardId\": \"" + rewardId + "\", \"rewardData\": " + rewardData + "}"; // Including orderId
@@ -32,8 +33,8 @@ public class RewardKafkaProducer {
                     log.error("Failed to send reward event to kafka. topic:{},reward Data:{}", topic, rewardData, ex);
                 }
             });
-        }catch(JsonProcessingException e){
-            log.error("Failed to serialize rewardRestModel to kafka",e);
+        } catch (JsonProcessingException e) {
+            log.error("Failed to serialize rewardRestModel to kafka", e);
         }
 
     }

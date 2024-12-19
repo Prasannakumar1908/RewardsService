@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 public class RewardRestModel {
     private String rewardName;
     private int points;
+
     public RewardRestModel(String rewardName, int points) {
         this.rewardName = rewardName;
         this.points = points;
